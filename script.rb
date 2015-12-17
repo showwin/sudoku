@@ -32,7 +32,7 @@ def search_candidate(table, x, y)
 end
 
 # ファイルを読み込んで、配列に落としこむ
-file = ARGV[0] || 'input'
+file = ARGV[0] || 'input2'
 ipt = File.open("#{file}.txt", 'r')
 table = Array.new(9, Array.new(9))
 i = 0
@@ -41,7 +41,20 @@ ipt.each_line do |row|
   i += 1
 end
 
+def show_result(table)
+  table.each do |row|
+    puts row.join(',')
+  end
+end
+
+def show_0
+  9.times do
+    puts '0,' * 8 + '0'
+  end
+end
+
 count = 1
+nothing_change = true
 
 loop do
   nothing_change = true
@@ -108,10 +121,8 @@ loop do
   count += 1
 end
 
-def show_result(table)
-  table.each do |row|
-    puts row.join(',')
-  end
-end
-
-show_result(table)
+#if nothing_change
+#  show_0
+#else
+  show_result(table)
+#end
